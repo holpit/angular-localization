@@ -9,27 +9,8 @@ app.service('LanguageService', ['$q', '$http', function ($q, $http) {
         return new LanguageService($q, $http, cultures, '/static/labels.json');
     }]);
 
-var Culture = (function () {
-    function Culture(_code, _description) {
-        this._code = _code;
-        this._description = _description;
-    }
-    Object.defineProperty(Culture.prototype, "code", {
-        get: function () { return this._code; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Culture.prototype, "description", {
-        get: function () { return this._description; },
-        enumerable: true,
-        configurable: true
-    });
-    return Culture;
-}());
-
 var LanguageController = (function () {
-    function LanguageController($scope, languageService) {
-        this.$scope = $scope;
+    function LanguageController(languageService) {
         this.languageService = languageService;
         this._cultures = null;
         this._cultures = languageService.registeredCultures;
@@ -92,6 +73,24 @@ var MainController = (function () {
     return MainController;
 }());
 app.controller("MainController", MainController);
+
+var Culture = (function () {
+    function Culture(_code, _description) {
+        this._code = _code;
+        this._description = _description;
+    }
+    Object.defineProperty(Culture.prototype, "code", {
+        get: function () { return this._code; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Culture.prototype, "description", {
+        get: function () { return this._description; },
+        enumerable: true,
+        configurable: true
+    });
+    return Culture;
+}());
 
 
 
