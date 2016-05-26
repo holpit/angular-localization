@@ -9,71 +9,6 @@ app.service('LanguageService', ['$q', '$http', function ($q, $http) {
         return new LanguageService($q, $http, cultures, '/static/labels.json');
     }]);
 
-var LanguageController = (function () {
-    function LanguageController(languageService) {
-        this.languageService = languageService;
-        this._cultures = null;
-        this._cultures = languageService.registeredCultures;
-    }
-    Object.defineProperty(LanguageController.prototype, "cultures", {
-        get: function () { return this._cultures; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(LanguageController.prototype, "currentCulture", {
-        get: function () {
-            return this.languageService.currentCulture;
-        },
-        set: function (val) {
-            console.log('setting culture to: ' + val.description);
-            this.languageService.setCurrent(val);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    LanguageController.$inject = ["$scope", "LanguageService"];
-    return LanguageController;
-}());
-app.controller("LanguageController", LanguageController);
-
-var MainController = (function () {
-    function MainController($scope, languageService) {
-        this.$scope = $scope;
-        this.languageService = languageService;
-        this._title = '';
-        this._description = '';
-        var me = this;
-        $scope.$watch(function () { return languageService.currentCulture; }, function (data) {
-            console.log('culture changed to: ' + data.description);
-            me.readLabels();
-        }, true);
-        this.readLabels();
-    }
-    MainController.prototype.readLabels = function () {
-        var labelKeys = [
-            'MAIN_TITLE', 'MAIN_DESCRIPTION'
-        ];
-        var me = this;
-        this.languageService.getLabels(labelKeys).then(function (results) {
-            me._title = results[0];
-            me._description = results[1];
-        });
-    };
-    Object.defineProperty(MainController.prototype, "title", {
-        get: function () { return this._title; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(MainController.prototype, "description", {
-        get: function () { return this._description; },
-        enumerable: true,
-        configurable: true
-    });
-    MainController.$inject = ["$scope", "LanguageService"];
-    return MainController;
-}());
-app.controller("MainController", MainController);
-
 var Culture = (function () {
     function Culture(_code, _description) {
         this._code = _code;
@@ -179,5 +114,70 @@ var LanguageService = (function () {
     };
     return LanguageService;
 }());
+
+var LanguageController = (function () {
+    function LanguageController(languageService) {
+        this.languageService = languageService;
+        this._cultures = null;
+        this._cultures = languageService.registeredCultures;
+    }
+    Object.defineProperty(LanguageController.prototype, "cultures", {
+        get: function () { return this._cultures; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(LanguageController.prototype, "currentCulture", {
+        get: function () {
+            return this.languageService.currentCulture;
+        },
+        set: function (val) {
+            console.log('setting culture to: ' + val.description);
+            this.languageService.setCurrent(val);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    LanguageController.$inject = ["LanguageService"];
+    return LanguageController;
+}());
+app.controller("LanguageController", LanguageController);
+
+var MainController = (function () {
+    function MainController($scope, languageService) {
+        this.$scope = $scope;
+        this.languageService = languageService;
+        this._title = '';
+        this._description = '';
+        var me = this;
+        $scope.$watch(function () { return languageService.currentCulture; }, function (data) {
+            console.log('culture changed to: ' + data.description);
+            me.readLabels();
+        }, true);
+        this.readLabels();
+    }
+    MainController.prototype.readLabels = function () {
+        var labelKeys = [
+            'MAIN_TITLE', 'MAIN_DESCRIPTION'
+        ];
+        var me = this;
+        this.languageService.getLabels(labelKeys).then(function (results) {
+            me._title = results[0];
+            me._description = results[1];
+        });
+    };
+    Object.defineProperty(MainController.prototype, "title", {
+        get: function () { return this._title; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MainController.prototype, "description", {
+        get: function () { return this._description; },
+        enumerable: true,
+        configurable: true
+    });
+    MainController.$inject = ["$scope", "LanguageService"];
+    return MainController;
+}());
+app.controller("MainController", MainController);
 
 //# sourceMappingURL=maps/app.js.map
