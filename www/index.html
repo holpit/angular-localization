@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJs Localization Example</title>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    
+</head>
+<body ng-app="localizationApp">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10" ng-controller="MainController as ctrl" >
+                <h1>{{ctrl.title}}</h1>
+                <p>{{ctrl.description}}</p>
+            </div>
+            <div class="col-md-2" ng-controller="LanguageController as ctrl" >
+                <select ng-options="item as item.description for item in ctrl.cultures track by item.code" 
+                        ng-model="ctrl.currentCulture"></select>
+            </div>
+        </div>
+    </div> 
+    
+    <script src="//code.jquery.com/jquery-1.12.3.min.js"></script>    
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="//code.angularjs.org/1.5.3/angular.js"></script>
+    
+    <script src="app/app.js"></script>
+</body>
+</html>

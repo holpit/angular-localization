@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "amd",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "sourceMap": true
+    },
+    "exclude": [
+        "node_modules",
+        "typings",
+        "www"
+    ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "angular-localization",
+  "version": "1.0.0",
+  "description": "Simple example of how to do string localization with Typescript and AngularJS",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mizrael/angular-localization.git"
+  },
+  "keywords": [
+    "AngularJs",
+    "Localization",
+    "Typescript"
+  ],
+  "author": "Davide Guida",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mizrael/angular-localization/issues"
+  },
+  "homepage": "https://github.com/mizrael/angular-localization#readme"
+}

@@ -1,0 +1,10 @@
+{
+    "it-IT":{
+        "MAIN_TITLE": "versione italiana",
+        "MAIN_DESCRIPTION": "questo testo è in italiano"
+    },
+    "en-US":{
+        "MAIN_TITLE": "english version",
+        "MAIN_DESCRIPTION": "this text is in english"
+    }
+}
