@@ -1,7 +1,7 @@
 class MainController{
     static $inject = ["$scope", "LanguageService"];
     
-    public constructor(private $scope:any, private languageService:ILanguageService){
+    public constructor(private $scope:ng.IScope, private languageService:ILanguageService){
         let me = this;
         
         $scope.$watch( function () { return languageService.currentCulture; }, function (data:Culture) {
