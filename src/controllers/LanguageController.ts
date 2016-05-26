@@ -1,7 +1,7 @@
 class LanguageController{
     
     static $inject = ["$scope", "LanguageService"];
-    public constructor(private $scope:any, private languageService:ILanguageService){
+    public constructor(private languageService:ILanguageService){
         this._cultures = languageService.registeredCultures;
     }
     
